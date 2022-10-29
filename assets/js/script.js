@@ -17,35 +17,30 @@ function selecionarQuiz(quiz) {
 
 let respostaSelecionada = "";
 let repostasCorretas = 0;
-let mudarValor = 0;
 let atual = 0;
 
 function quizAtualJogo(quizAtual) {
-  let iniciarQuiz = document.querySelector("#container-geral");
+  let iniciarQuiz = document.querySelector("#container-geral .remover-quiz");
   let conteudoQuiz = "";
 
   if (quizAtual[atual]) {
-    console.log(quizAtual[atual])
     let q = quizAtual[atual];
     conteudoQuiz += '<main class="bg-quiz">';
-    conteudoQuiz += '<div class"container-quetoes">';
-    conteudoQuiz += "<div class='pergunta'><h2></h2></div>";
+    conteudoQuiz += '<div class="pergunta-questoes">';
+    conteudoQuiz += '<div class="pergunta"><h2></h2></div>';
     conteudoQuiz += '<div class="questoes-quiz"></div>';
-    conteudoQuiz += ` <button class="button">proximo</button>`;
-    conteudoQuiz += "</div>";
+    conteudoQuiz += '</div>';
+    conteudoQuiz += `<button class="button">proximo</button>`;
     conteudoQuiz += "</main>";
 
     iniciarQuiz.innerHTML = conteudoQuiz;
 
     let pergunta = document.querySelector(".pergunta h2");
-    let questao = document.querySelector(".questoes-quiz");
-
     pergunta.innerHTML = `${q.pergunta}`;
 
+    let questao = document.querySelector(".questoes-quiz");
     for (let i in q.questoes) {
-      questao.innerHTML += `<div id="organizar"><input type="radio" name="escolha" value="escolha" id="escolha${mudarValor}"><label class="respostaSelecionada" for="escolha${mudarValor}">${q.questoes[i]}</label></div>`;
-
-      mudarValor++;
+      questao.innerHTML += `<div id="organizar"><input type="radio" name="escolha" value="escolha" id="escolha${i}"><label class="respostaSelecionada" for="escolha${i}">${q.questoes[i]}</label></div>`;
     }
 
     let respostaSelecionada = document.querySelectorAll(".respostaSelecionada");
@@ -59,19 +54,16 @@ function quizAtualJogo(quizAtual) {
         this.classList.add("cor-red");
       }
     }
-    respostaSelecionada.forEach((e) => {
-      e.addEventListener("click", respondido);
-    });
-
-    atual++;
+    respostaSelecionada.forEach((e) => e.addEventListener("click", respondido));
 
     let proximaPergunta = document.querySelector(".button");
     proximaPergunta.addEventListener("click", proximaNow);
     quizAtual[atual]
   } else {
     finishQuiz()
-    
   }
+
+  atual++;
 }
 
 function proximaNow(){
@@ -81,6 +73,11 @@ function proximaNow(){
 /*   Finalizar o Quiz*/
 
 function finishQuiz(){
+   let finalizar = document.querySelector(".bg-quiz")
+   finalizar.classList.add('fechar')
+
+   let abrirResumo = document.querySelector('#bg-abrir')
+   abrirResumo.classList.remove('fechar')
    
 }
 

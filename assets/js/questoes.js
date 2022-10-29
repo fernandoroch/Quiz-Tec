@@ -14,8 +14,6 @@ let questoesHtml = [
       'usados para definir partes de um documento',
       'ECMAScript 2014',
       'ECMAScript 2015',
-      'ECMAScript 2016',
-      'ECMAScript 2017',
     ],
     correta: 'usados para definir partes de um documento'
   }
@@ -28,8 +26,6 @@ let questoesCss = [
       'ECMAScript 2013',
       'ECMAScript 2014',
       'ECMAScript 2015',
-      'ECMAScript 2016',
-      'ECMAScript 2017',
     ],
     correta: 'ECMAScript 2015'
   },
@@ -39,8 +35,6 @@ let questoesCss = [
       'ECMAScript 2013',
       'ECMAScript 2014',
       'ECMAScript 2015',
-      'ECMAScript 2016',
-      'ECMAScript 2017',
     ],
     correta: 'ECMAScript 2017'
   }
@@ -62,8 +56,6 @@ let questoesJs = [
       'ECMAScript 2013',
       'ECMAScript 2014',
       'ECMAScript 2015',
-      'ECMAScript 2016',
-      'ECMAScript 2017',
     ],
     correta: 'ECMAScript 2015'
   }
