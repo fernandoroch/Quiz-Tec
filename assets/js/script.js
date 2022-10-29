@@ -7,15 +7,24 @@ function selecionarQuiz(quiz) {
   } else if (quiz === "questoesCss") {
     quizAtualJogo(questoesCss);
     quizSelection = questoesCss
-  } else {
+  } else if (quiz === "questoesJs"){
     quizAtualJogo(questoesJs);
     quizSelection = questoesJs
+  } else if (quiz === "questoesReacte") {
+    quizAtualJogo(questoesReacte);
+    quizSelection = questoesReacte
+  } else if (quiz === "questoesRedux") {
+    quizAtualJogo(questoesRedux);
+    quizSelection = questoesRedux
+  } else {
+    quizAtualJogo(questoesSass);
+    quizSelection = questoesSass
   }
 }
 
 
 
-let respostaSelecionada = "";
+let respostaSe = [];
 let repostasCorretas = 0;
 let atual = 0;
 
@@ -28,9 +37,8 @@ function quizAtualJogo(quizAtual) {
     conteudoQuiz += '<main class="bg-quiz">';
     conteudoQuiz += '<div class="pergunta-questoes">';
     conteudoQuiz += '<div class="pergunta"><h2></h2></div>';
-    conteudoQuiz += '<div class="questoes-quiz"></div>';
+    conteudoQuiz += '<div class="questoes-quiz"><form id="form"><button type="submit" class="button">proximo</button></form></div>';
     conteudoQuiz += '</div>';
-    conteudoQuiz += `<button class="button">proximo</button>`;
     conteudoQuiz += "</main>";
 
     iniciarQuiz.innerHTML = conteudoQuiz;
@@ -38,26 +46,20 @@ function quizAtualJogo(quizAtual) {
     let pergunta = document.querySelector(".pergunta h2");
     pergunta.innerHTML = `${q.pergunta}`;
 
-    let questao = document.querySelector(".questoes-quiz");
+    let questao = document.querySelector(".questoes-quiz #form");
     for (let i in q.questoes) {
-      questao.innerHTML += `<div id="organizar"><input type="radio" name="escolha" value="escolha" id="escolha${i}"><label class="respostaSelecionada" for="escolha${i}">${q.questoes[i]}</label></div>`;
+      questao.innerHTML += `<div id="organizar"><input type="radio" name="escolha" value="${i}" id="escolha${i}"><label class="respostaSelecionada" for="escolha${i}">${q.questoes[i]}</label></div>`;
     }
-
-    let respostaSelecionada = document.querySelectorAll(".respostaSelecionada");
-
-    function respondido() {
-      let verificar = this.innerHTML;
-      if (verificar === q.correta) {
-        this.classList.add("cor-green");
-        repostasCorretas++;
-      } else {
-        this.classList.add("cor-red");
-      }
-    }
-    respostaSelecionada.forEach((e) => e.addEventListener("click", respondido));
 
     let proximaPergunta = document.querySelector(".button");
-    proximaPergunta.addEventListener("click", proximaNow);
+    proximaPergunta.addEventListener("click", (e) => {
+      e.preventDefault()
+
+      respostaSe.push(questao.escolha.value) 
+      console.log(respostaSe)
+
+      quizAtualJogo(quizSelection)
+    });
     quizAtual[atual]
   } else {
     finishQuiz()
@@ -66,9 +68,7 @@ function quizAtualJogo(quizAtual) {
   atual++;
 }
 
-function proximaNow(){
-  quizAtualJogo(quizSelection)
-}
+
 
 /*   Finalizar o Quiz*/
 
