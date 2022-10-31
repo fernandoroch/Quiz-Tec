@@ -266,3 +266,78 @@
     transform: translateY(-17px) translateX(200px);
   }
 }
+
+/*   Tela de finalização   */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3em;
+  gap: 5em;
+  font-size: 1.2em;
+  background: linear-gradient( rgba(0,0,0,.5),#434343) ;
+  border-radius: 15px;
+}
+
+.resumo-geral{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.resumo-geral img {
+  width: 130px;
+  margin-bottom: 1.5em;
+}
+
+.resumo-geral p {
+  margin-bottom: 1.5em;
+}
+
+.resumo-geral button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(90deg, rgb(6, 224, 224), rgb(4, 170, 170));
+  color: #fff;
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.resumo-geral button:hover {
+  background: linear-gradient(90deg, rgb(4, 170, 170),rgb(6, 224, 224));
+  scale: 1.05;
+}
+
+
+.respostas-erradas {
+  text-align: center;
+  max-height: 300px;
+  overflow-y: scroll;
+  padding: 15px;
+  margin: 0 auto;
+}
+.respostas-erradas::-webkit-scrollbar {
+  width: 4px;
+  
+}
+.respostas-erradas::-webkit-scrollbar-track {
+  background: linear-gradient( rgb(6, 224, 224), rgb(4, 170, 170));
+  border-radius: 20px;
+}
+.respostas-erradas::-webkit-scrollbar-thumb {
+  background-color: #1c0235;
+  border-radius: 20px;
+
+}
+
+.respostas-erradas h2{
+  padding-bottom: 1.2em;
+}
+
+.respostas-erradas dd {
+  padding: 0.5em 0 1.2em 0;
+}

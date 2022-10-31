@@ -56,7 +56,6 @@ function quizAtualJogo(quizAtual) {
       e.preventDefault()
 
       respostaSe.push(questao.escolha.value) 
-      console.log(respostaSe)
 
       quizAtualJogo(quizSelection)
     });
