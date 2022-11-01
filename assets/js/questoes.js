@@ -93,7 +93,7 @@ let questoesCss = [
     correta: '1'
   },
   {
-    pergunta: 'O que é o CSS?',
+    pergunta: 'o css estiliza?',
     questoes:[
       'ECMAScript 2013',
       'ECMAScript 2014',

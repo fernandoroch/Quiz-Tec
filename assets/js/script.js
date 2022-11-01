@@ -1,9 +1,12 @@
 let quizSelection = [];
+let respostaSe = [];
+let repostasCorretas = 0;
+let atual = 0;
 
 function selecionarQuiz(quiz) {
   if (quiz === "questoesHtml") {
     quizAtualJogo(questoesHtml);
-    quizSelection = questoesHtml; 
+    quizSelection = questoesHtml;
   } else if (quiz === "questoesCss") {
     quizAtualJogo(questoesCss);
     quizSelection = questoesCss;
@@ -22,16 +25,10 @@ function selecionarQuiz(quiz) {
   }
 }
 
-
-
-let respostaSe = [];
-let repostasCorretas = 0;
-let atual = 0;
-
 function quizAtualJogo(quizAtual) {
   let iniciarQuiz = document.querySelector("#container-geral .remover-quiz");
   let conteudoQuiz = "";
-  
+
   if (quizAtual[atual]) {
     let q = quizAtual[atual];
     conteudoQuiz += '<main class="bg-quiz">';
@@ -58,17 +55,14 @@ function quizAtualJogo(quizAtual) {
       if (questao.escolha.value) {
         respostaSe.push(questao.escolha.value);
         quizAtualJogo(quizSelection);
-      }else {
-        alert('Escolha uma resposta')
+      } else {
+        alert("Escolha uma resposta");
       }
     });
     quizAtual[atual];
   } else {
     finishQuiz();
   }
-
-  
-
   atual++;
 }
 
@@ -81,49 +75,57 @@ function finishQuiz() {
   let abrirResumo = document.querySelector("#bg-abrir");
   abrirResumo.classList.remove("fechar");
 
-  let arreyRespostas = []
-  let arreySelecionado = []
-  let arreyResErrada = []
-  let somar = 0
-  let qtc = 0
-  let qtcSelec = 0
-  
+  let arreyRespostas = [];
+  let arreySelecionado = [];
+  let arreyResErrada = [];
+  let arreyPerResErrada = [];
+  let somar = 0;
+  let qtc = 0;
+  let qtcSelec = 0;
 
   quizSelection.forEach((e) => {
-    arreyRespostas.push(e.correta) 
-  })
+    arreyRespostas.push(e.correta);
+  });
 
   respostaSe.forEach((e) => {
-    if(e !== arreyRespostas[somar]){
-      let charResposta = +quizSelection[somar].correta
-      arreyResErrada.push(quizSelection[somar].questoes[charResposta])
-    }else {
-      qtcSelec++
-      
+    if (e !== arreyRespostas[somar]) {
+      let charResposta = +quizSelection[somar].correta;
+      arreyResErrada.push(quizSelection[somar].questoes[charResposta]);
+      arreyPerResErrada.push(quizSelection[somar].pergunta);
+    } else {
+      qtcSelec++;
     }
-    somar++
-    qtc++
-    
-  })
+    somar++;
+    qtc++;
+  });
 
- /*   mostrar os elementos na tela   */
-  let porcentagemAcerto = parseInt((qtcSelec * 100) / qtc)
-  let parabens = document.querySelector('.resumo-geral p')
-  let porAcerto = document.querySelector('.resumo-geral .porcentagem-acerto')
-  let perDaResposta = document.querySelector('.respostas-erradas dt')
-  let respostasEradas = document.querySelector('.respostas-erradas dd')
-  
+  /*   mostrar os elementos na tela   */
+  let porcentagemAcerto = parseInt((qtcSelec * 100) / qtc);
+  let parabens = document.querySelector(".resumo-geral p");
+  let porAcerto = document.querySelector(".resumo-geral .porcentagem-acerto");
+  let perDaResposta = document.querySelector(".respostas-erradas .respotas");
+  let somarRes = 0;
 
-  reiniciarGame()
+  porAcerto.innerHTML = `De ${qtc} perguntas você acentou ${qtcSelec}`;
+
+  arreyPerResErrada.forEach((e) => {
+    perDaResposta.innerHTML += `<dt>Pergunta: ${e}</dt>`;
+    perDaResposta.innerHTML += `<dd>Resposta certa: ${arreyResErrada[somarRes]}</dd>`;
+    somarRes++;
+  });
+
+  if (porcentagemAcerto <= 40) {
+    parabens.innerHTML = "Você foi horrivel";
+    parabens.classList.add("cor-red");
+  } else if (porcentagemAcerto <= 70) {
+    parabens.innerHTML = "Você foi mas precisa melhorar";
+    parabens.classList.add("cor-red");
+  } else if (porcentagemAcerto <= 90) {
+    parabens.innerHTML = "Parabéns você foi bom";
+    parabens.classList.add("cor-green");
+  } else {
+    parabens.innerHTML = "Parabéns você foi incrivel";
+    parabens.classList.add("cor-green");
+  }
 }
 /*   reiniciar o game*/
-function reiniciarGame(){
-
-}
-
-
-
-
-
-
-
