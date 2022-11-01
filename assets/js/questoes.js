@@ -6,7 +6,7 @@ let questoesHtml = [
       'HTML é uma linguagem de programação',
       'HTML é uma linguagem de estilização',
     ],
-    correta: 'HTML é uma linguagem de marcação'
+    correta: 0
   },
   {
     pergunta: 'o que é uma DIV?',
@@ -15,7 +15,25 @@ let questoesHtml = [
       'ECMAScript 2014',
       'ECMAScript 2015',
     ],
-    correta: 'usados para definir partes de um documento'
+    correta: 0
+  },
+  {
+    pergunta: 'O que é HTML?',
+    questoes:[
+      'HTML é uma linguagem de programação',
+      'HTML é uma linguagem de estilização',
+      'HTML é uma linguagem de marcação',
+    ],
+    correta: 2
+  },
+  {
+    pergunta: 'o que é uma DIV?',
+    questoes:[
+      'ECMAScript 2014',
+      'usados para definir partes de um documento',
+      'ECMAScript 2015',
+    ],
+    correta: 1
   },
   {
     pergunta: 'O que é HTML?',
@@ -24,7 +42,7 @@ let questoesHtml = [
       'HTML é uma linguagem de programação',
       'HTML é uma linguagem de estilização',
     ],
-    correta: 'HTML é uma linguagem de marcação'
+    correta: 0
   },
   {
     pergunta: 'o que é uma DIV?',
@@ -33,43 +51,25 @@ let questoesHtml = [
       'ECMAScript 2014',
       'ECMAScript 2015',
     ],
-    correta: 'usados para definir partes de um documento'
+    correta: 0
   },
   {
     pergunta: 'O que é HTML?',
     questoes:[
-      'HTML é uma linguagem de marcação',
       'HTML é uma linguagem de programação',
       'HTML é uma linguagem de estilização',
+      'HTML é uma linguagem de marcação',
     ],
-    correta: 'HTML é uma linguagem de marcação'
+    correta: 2
   },
   {
     pergunta: 'o que é uma DIV?',
     questoes:[
-      'usados para definir partes de um documento',
       'ECMAScript 2014',
+      'usados para definir partes de um documento',
       'ECMAScript 2015',
     ],
-    correta: 'usados para definir partes de um documento'
-  },
-  {
-    pergunta: 'O que é HTML?',
-    questoes:[
-      'HTML é uma linguagem de marcação',
-      'HTML é uma linguagem de programação',
-      'HTML é uma linguagem de estilização',
-    ],
-    correta: 'HTML é uma linguagem de marcação'
-  },
-  {
-    pergunta: 'o que é uma DIV?',
-    questoes:[
-      'usados para definir partes de um documento',
-      'ECMAScript 2014',
-      'ECMAScript 2015',
-    ],
-    correta: 'usados para definir partes de um documento'
+    correta: 1
   }
 ]
 
@@ -81,7 +81,7 @@ let questoesCss = [
       'ECMAScript 2014',
       'ECMAScript 2015',
     ],
-    correta: 'ECMAScript 2015'
+    correta: '0'
   },
   {
     pergunta: 'O que é o CSS?',
@@ -90,7 +90,16 @@ let questoesCss = [
       'ECMAScript 2014',
       'ECMAScript 2015',
     ],
-    correta: 'ECMAScript 2017'
+    correta: '1'
+  },
+  {
+    pergunta: 'O que é o CSS?',
+    questoes:[
+      'ECMAScript 2013',
+      'ECMAScript 2014',
+      'ECMAScript 2015',
+    ],
+    correta: '2'
   }
 ]
 
@@ -102,7 +111,7 @@ let questoesJs = [
       'HTML é uma linguagem de programação',
       'HTML é uma linguagem de estilização',
     ],
-    correta: 'HTML é uma linguagem de marcação'
+    correta: 0
   },
   {
     pergunta: 'O que S6 representa?',
@@ -111,7 +120,7 @@ let questoesJs = [
       'ECMAScript 2014',
       'ECMAScript 2015',
     ],
-    correta: 'ECMAScript 2015'
+    correta: 0
   }
 ]
 let questoesReacte = [
@@ -122,7 +131,7 @@ let questoesReacte = [
       'HTML é uma linguagem de programação',
       'HTML é uma linguagem de estilização',
     ],
-    correta: 'HTML é uma linguagem de marcação'
+    correta: 0
   },
   {
     pergunta: 'O que S6 representa?',
@@ -131,7 +140,7 @@ let questoesReacte = [
       'ECMAScript 2014',
       'ECMAScript 2015',
     ],
-    correta: 'ECMAScript 2015'
+    correta: 0
   }
 ]
 let questoesRedux = [
@@ -142,7 +151,7 @@ let questoesRedux = [
       'HTML é uma linguagem de programação',
       'HTML é uma linguagem de estilização',
     ],
-    correta: 'HTML é uma linguagem de marcação'
+    correta: 0
   },
   {
     pergunta: 'O que S6 representa?',
@@ -151,7 +160,7 @@ let questoesRedux = [
       'ECMAScript 2014',
       'ECMAScript 2015',
     ],
-    correta: 'ECMAScript 2015'
+    correta: 0
   }
 ]
 let questoesSass = [
@@ -162,7 +171,7 @@ let questoesSass = [
       'HTML é uma linguagem de programação',
       'HTML é uma linguagem de estilização',
     ],
-    correta: 'HTML é uma linguagem de marcação'
+    correta: 0
   },
   {
     pergunta: 'O que S6 representa?',
@@ -171,6 +180,6 @@ let questoesSass = [
       'ECMAScript 2014',
       'ECMAScript 2015',
     ],
-    correta: 'ECMAScript 2015'
+    correta: 0
   }
 ]

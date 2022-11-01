@@ -1,24 +1,24 @@
-let quizSelection = ''
+let quizSelection = [];
 
 function selecionarQuiz(quiz) {
   if (quiz === "questoesHtml") {
     quizAtualJogo(questoesHtml);
-    quizSelection = questoesHtml
+    quizSelection = questoesHtml; 
   } else if (quiz === "questoesCss") {
     quizAtualJogo(questoesCss);
-    quizSelection = questoesCss
-  } else if (quiz === "questoesJs"){
+    quizSelection = questoesCss;
+  } else if (quiz === "questoesJs") {
     quizAtualJogo(questoesJs);
-    quizSelection = questoesJs
+    quizSelection = questoesJs;
   } else if (quiz === "questoesReacte") {
     quizAtualJogo(questoesReacte);
-    quizSelection = questoesReacte
+    quizSelection = questoesReacte;
   } else if (quiz === "questoesRedux") {
     quizAtualJogo(questoesRedux);
-    quizSelection = questoesRedux
+    quizSelection = questoesRedux;
   } else {
     quizAtualJogo(questoesSass);
-    quizSelection = questoesSass
+    quizSelection = questoesSass;
   }
 }
 
@@ -31,14 +31,15 @@ let atual = 0;
 function quizAtualJogo(quizAtual) {
   let iniciarQuiz = document.querySelector("#container-geral .remover-quiz");
   let conteudoQuiz = "";
-
+  
   if (quizAtual[atual]) {
     let q = quizAtual[atual];
     conteudoQuiz += '<main class="bg-quiz">';
     conteudoQuiz += '<div class="pergunta-questoes">';
     conteudoQuiz += '<div class="pergunta"><h2></h2></div>';
-    conteudoQuiz += '<div class="questoes-quiz"><form id="form"><button type="submit" class="button">proximo</button></form></div>';
-    conteudoQuiz += '</div>';
+    conteudoQuiz +=
+      '<div class="questoes-quiz"><form id="form"><button type="submit" class="button">proximo</button></form></div>';
+    conteudoQuiz += "</div>";
     conteudoQuiz += "</main>";
 
     iniciarQuiz.innerHTML = conteudoQuiz;
@@ -53,31 +54,71 @@ function quizAtualJogo(quizAtual) {
 
     let proximaPergunta = document.querySelector(".button");
     proximaPergunta.addEventListener("click", (e) => {
-      e.preventDefault()
-
-      respostaSe.push(questao.escolha.value) 
-
-      quizAtualJogo(quizSelection)
+      e.preventDefault();
+      if (questao.escolha.value) {
+        respostaSe.push(questao.escolha.value);
+        quizAtualJogo(quizSelection);
+      }else {
+        alert('Escolha uma resposta')
+      }
     });
-    quizAtual[atual]
+    quizAtual[atual];
   } else {
-    finishQuiz()
+    finishQuiz();
   }
+
+  
 
   atual++;
 }
 
-
-
 /*   Finalizar o Quiz*/
 
-function finishQuiz(){
-   let finalizar = document.querySelector(".bg-quiz")
-   finalizar.classList.add('fechar')
+function finishQuiz() {
+  let finalizar = document.querySelector(".bg-quiz");
+  finalizar.classList.add("fechar");
 
-   let abrirResumo = document.querySelector('#bg-abrir')
-   abrirResumo.classList.remove('fechar')
-   
+  let abrirResumo = document.querySelector("#bg-abrir");
+  abrirResumo.classList.remove("fechar");
+
+  let arreyRespostas = []
+  let arreySelecionado = []
+  let arreyResErrada = []
+  let somar = 0
+  let qtc = 0
+  let qtcSelec = 0
+  
+
+  quizSelection.forEach((e) => {
+    arreyRespostas.push(e.correta) 
+  })
+
+  respostaSe.forEach((e) => {
+    if(e !== arreyRespostas[somar]){
+      let charResposta = +quizSelection[somar].correta
+      arreyResErrada.push(quizSelection[somar].questoes[charResposta])
+    }else {
+      qtcSelec++
+      
+    }
+    somar++
+    qtc++
+    
+  })
+
+ /*   mostrar os elementos na tela   */
+  let porcentagemAcerto = parseInt((qtcSelec * 100) / qtc)
+  let parabens = document.querySelector('.resumo-geral p')
+  let porAcerto = document.querySelector('.resumo-geral .porcentagem-acerto')
+  let perDaResposta = document.querySelector('.respostas-erradas dt')
+  let respostasEradas = document.querySelector('.respostas-erradas dd')
+  
+
+  reiniciarGame()
+}
+/*   reiniciar o game*/
+function reiniciarGame(){
+
 }
 
 
@@ -86,6 +127,3 @@ function finishQuiz(){
 
 
 
-
-//let arrey = Array.prototype.slice.call(respostaSelecionada)
-//let arrey = Array.from(respostaSelecionada)
