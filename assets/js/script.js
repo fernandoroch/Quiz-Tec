@@ -13,9 +13,9 @@ function selecionarQuiz(quiz) {
   } else if (quiz === "questoesJs") {
     quizAtualJogo(questoesJs);
     quizSelection = questoesJs;
-  } else if (quiz === "questoesReacte") {
-    quizAtualJogo(questoesReacte);
-    quizSelection = questoesReacte;
+  } else if (quiz === "questoesReact") {
+    quizAtualJogo(questoesReact);
+    quizSelection = questoesReact;
   } else if (quiz === "questoesRedux") {
     quizAtualJogo(questoesRedux);
     quizSelection = questoesRedux;
@@ -109,8 +109,8 @@ function finishQuiz() {
   porAcerto.innerHTML = `De ${qtc} perguntas você acentou ${qtcSelec}`;
 
   arreyPerResErrada.forEach((e) => {
-    perDaResposta.innerHTML += `<dt>Pergunta: ${e}</dt>`;
-    perDaResposta.innerHTML += `<dd>Resposta certa: ${arreyResErrada[somarRes]}</dd>`;
+    perDaResposta.innerHTML += `<dt><span class="cor-blue">Pergunta:</span> ${e}</dt>`;
+    perDaResposta.innerHTML += `<dd><span class="cor-red">Resposta certa:</span> ${arreyResErrada[somarRes]}</dd>`;
     somarRes++;
   });
 
