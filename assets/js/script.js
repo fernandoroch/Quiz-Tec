@@ -1,28 +1,11 @@
-let quizSelection = [];
+let quizSelection = '';
 let respostaSe = [];
 let repostasCorretas = 0;
 let atual = 0;
 
 function selecionarQuiz(quiz) {
-  if (quiz === "questoesHtml") {
-    quizAtualJogo(questoesHtml);
-    quizSelection = questoesHtml;
-  } else if (quiz === "questoesCss") {
-    quizAtualJogo(questoesCss);
-    quizSelection = questoesCss;
-  } else if (quiz === "questoesJs") {
-    quizAtualJogo(questoesJs);
-    quizSelection = questoesJs;
-  } else if (quiz === "questoesReact") {
-    quizAtualJogo(questoesReact);
-    quizSelection = questoesReact;
-  } else if (quiz === "questoesRedux") {
-    quizAtualJogo(questoesRedux);
-    quizSelection = questoesRedux;
-  } else {
-    quizAtualJogo(questoesSass);
-    quizSelection = questoesSass;
-  }
+  quizAtualJogo(quiz)
+  quizSelection = quiz 
 }
 
 function quizAtualJogo(quizAtual) {
