@@ -1,7 +1,11 @@
 let quizSelection = "";
 let respostaSe = [];
+
 let repostasCorretas = 0;
 let atual = 0;
+
+let qtc = 0;
+let qtcSelec = 0;
 
 /*   Define o Quiz que será jogado*/
 function selecionarQuiz(quiz) {
@@ -78,44 +82,34 @@ function AbrirTelaDeResultado(){
 /*   Finalizar o Quiz*/
 function finishQuiz() {
   AbrirTelaDeResultado()
-
-  let arreyRespostas = [];
-  let arreySelecionado = [];
+  let arreyRespostas = quizSelection.map(item => item.correta)  
   let arreyResErrada = [];
   let arreyPerResErrada = [];
-  let somar = 0;
-  let qtc = 0;
-  let qtcSelec = 0;
 
-  quizSelection.forEach((e) => {
-    arreyRespostas.push(e.correta);
-  });
-
-  respostaSe.forEach((e) => {
-    if (e !== arreyRespostas[somar]) {
-      let charResposta = +quizSelection[somar].correta;
-      arreyResErrada.push(quizSelection[somar].questoes[charResposta]);
-      arreyPerResErrada.push(quizSelection[somar].pergunta);
+  respostaSe.forEach((e, index) => {
+    if (e !== arreyRespostas[index]) {
+      let charResposta = +quizSelection[index].correta;
+      arreyResErrada.push(quizSelection[index].questoes[charResposta]);
+      arreyPerResErrada.push(quizSelection[index].pergunta);
     } else {
       qtcSelec++;
     }
-    somar++;
     qtc++;
   });
+  mostraElementosTela(arreyResErrada, arreyPerResErrada)
+}
 
-  /*   mostrar os elementos na tela   */
+ /*   mostrar os elementos na tela depois de finalizar o quis  */
+function mostraElementosTela(res, per){
   let porcentagemAcerto = parseInt((qtcSelec * 100) / qtc);
   let parabens = document.querySelector(".resumo-geral p");
-  let porAcerto = document.querySelector(".resumo-geral .porcentagem-acerto");
   let perDaResposta = document.querySelector(".respostas-erradas .respotas");
-  let somarRes = 0;
-
+  let porAcerto = document.querySelector(".resumo-geral .porcentagem-acerto");
   porAcerto.innerHTML = `De ${qtc} perguntas você acentou ${qtcSelec}`;
 
-  arreyPerResErrada.forEach((e) => {
+  per.forEach((e, index) => {
     perDaResposta.innerHTML += `<dt><span class="cor-blue">Pergunta:</span> ${e}</dt>`;
-    perDaResposta.innerHTML += `<dd><span class="cor-red">Resposta certa:</span> ${arreyResErrada[somarRes]}</dd>`;
-    somarRes++;
+    perDaResposta.innerHTML += `<dd><span class="cor-red">Resposta certa:</span> ${res[index]}</dd>`;
   });
 
   if (porcentagemAcerto <= 40) {
@@ -132,4 +126,3 @@ function finishQuiz() {
     parabens.classList.add("cor-green");
   }
 }
-
